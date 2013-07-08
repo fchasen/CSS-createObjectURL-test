@@ -1,0 +1,17 @@
+@font-face{
+    font-family: OCRA; 
+    src: url("OCRAStd.otf");
+    /*src: url("http://themes.googleusercontent.com/static/fonts/roboto/v8/vzIUHo9z-oJ4WgkpPOtg13YhjbSpvc47ee6xR_80Hnw.woff");*/
+}
+h1 {
+    text-align: center;
+    font-family: 'OCRA'
+}
+
+#withBackground {
+	background: red;
+	background-image: url('broken-mirror.jpg');
+	width: 150px;
+	height: 150px;
+	margin: 50px auto;
+}

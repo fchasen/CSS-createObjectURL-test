@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Loaded From createObjectURL Test</title>
+
+        <!-- <link id="replace" rel="stylesheet" type="text/css" href="main.css"> -->
+        <link id="replace" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <h1>Hello World</h1>
+        <div id="withBackground"></div>
+        <ul id="log"></ul>
+
+        <script>
+            var _URL = window.URL || window.webkitURL || window.mozURL;
+            var sheet = document.getElementById('replace');
+            var logger = document.getElementById('log');
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'main.css', true);
+            xhr.responseType = 'blob';
+
+            sheet.onload = function(){
+                var fontStyle = document.styleSheets[0].cssRules[0].style;
+                log('@font-face src:', fontStyle.src);
+                log('@font-face src value:', fontStyle.getPropertyValue('src'));
+
+                var imageStyle = document.styleSheets[0].cssRules[2].style;
+                log('backgroundImage:', imageStyle.backgroundImage);
+                log('background-image value:', imageStyle.getPropertyValue('background-image'));
+                
+                // console.log(document.styleSheets[0])
+            }
+
+
+            xhr.onload = function(e) {
+              if (this.status == 200) {
+                var blob = new Blob([this.response], {type: 'text/css'});
+                var tempUrl = _URL.createObjectURL(blob);
+
+                sheet.setAttribute("href", tempUrl);
+                
+              }
+            };
+
+            xhr.send();
+
+            function log(what, val) {
+                var newLog = document.createElement('li');
+                newLog.innerHTML = ""+what+"&nbsp;<b>"+val+"</b>";
+                logger.appendChild(newLog);
+            }
+            
+        </script>
+    </body>
+</html>
