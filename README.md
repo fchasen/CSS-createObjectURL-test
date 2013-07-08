@@ -25,6 +25,7 @@ Test case can be viewed at:
 http://fchasen.github.io/CSS-createObjectURL-test/
 
 Browsers Tested:
-Chrome 27.0.1453.116 - url blank, tries to load as page url
-Firefox 22.0 - displays url values, but does not allow resources to load
-Safari 6.0.5 - displays url values, loads resources relative to page url
+
+- Chrome 27.0.1453.116 - url blank, tries to load as page url
+- Firefox 22.0 - displays url values, but does not allow resources to load
+- Safari 6.0.5 - displays url values, loads resources relative to page url
